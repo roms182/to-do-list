@@ -1,0 +1,51 @@
+<h1>Welcome to new TO DO LIST App</h1>
+
+
+<p><%= link_to 'Add', "#", "data-toggle" => 'modal', "data-target" => '#login-modal' %></p>
+
+<table id="todolist" class="table-bordered table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">Order</th>
+      <th class="text-center">Title</th>
+      <th class="text-center">Time</th>
+      <th>Del.</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tasks.each_with_index do |t, index| %>
+  <tr>
+    <td class="text-center"><%= index + 1 %></td>
+    <td><%= t.title %></td>
+    <td class="text-center"><%= t.time %></td>
+    <td class="text-center">
+      <%= link_to task_path(t), method: :delete do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+  <tr>
+    <td class="empty-row"></td>
+    <td class="empty-row"></td>
+    <td class="empty-row"></td>
+    <td class="empty-row"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align: right"> Total :</td>
+    <td class="text-center"><%=  @sumtime %></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<%= render 'shared/form_new' %>
+
+
+
+
+
+

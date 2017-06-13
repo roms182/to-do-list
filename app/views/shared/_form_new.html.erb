@@ -1,0 +1,17 @@
+<div class="modal fade" id="login-modal" tabindex="-1" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <h1><i class="fa fa-plus-circle" aria-hidden="true"></i>
+          Add new task
+      </h1>
+
+      <%= simple_form_for @task do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :title, placeholder: "Title", label: false %>
+        <%= f.input :time, placeholder: "Time", label: false %>
+        <%= f.submit 'Create', class:"loginmodal-submit" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
