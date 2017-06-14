@@ -15,5 +15,16 @@ table{
 
 td{
   padding:0px 5px;
-  overflow:none;
+   min-height:0px;
+ line-height:0;
+}
+
+tr{
+  height:35px;
+  min-height:0px;
+
+}
+
+.empty-row{
+  height:5px;
 }

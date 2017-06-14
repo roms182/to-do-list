@@ -1,7 +1,7 @@
 <h1>Welcome to new TO DO LIST App</h1>
 
 
-<p><%= link_to 'Add', "#", "data-toggle" => 'modal', "data-target" => '#login-modal' %></p>
+<p><%= link_to 'Add', "#", "data-toggle" => 'modal', "data-target" => '#new-task-modal' %></p>
 
 <table id="todolist" class="table-bordered table-striped">
   <thead>
@@ -9,40 +9,50 @@
       <th class="text-center">Order</th>
       <th class="text-center">Title</th>
       <th class="text-center">Time</th>
-      <th>Del.</th>
+      <th class="text-center">Del.</th>
     </tr>
   </thead>
   <tbody>
-  <% @tasks.each_with_index do |t, index| %>
-  <tr>
-    <td class="text-center"><%= index + 1 %></td>
-    <td><%= t.title %></td>
-    <td class="text-center"><%= t.time %></td>
-    <td class="text-center">
-      <%= link_to task_path(t), method: :delete do %>
+  <% @tasks.each_with_index do |task, index| %>
+  <tr data-task-id="<%= task.id %>">
+    <td class="text-center" data-task-id="<%= task.id %>"><%= index + 1 %></td>
+    <td data-task-id="<%= task.id %>"><%= task.title %></td>
+    <td class="text-center" data-task-id="<%= task.id %>"><%= task.time.to_s + " h"%></td>
+    <td class="text-center" data-task-id="<%= task.id %>">
+      <%= link_to task, method: :delete, remote: true do %>
         <i class="fa fa-times" aria-hidden="true"></i>
       <% end %>
     </td>
   </tr>
   <% end %>
-  <tr>
-    <td class="empty-row"></td>
-    <td class="empty-row"></td>
-    <td class="empty-row"></td>
-    <td class="empty-row"></td>
+  <tr class="empty-row">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td></td>
     <td style="text-align: right"> Total :</td>
-    <td class="text-center"><%=  @sumtime %></td>
+    <td class="text-center"><%=  @sumtime.to_s + " h" %></td>
     <td></td>
   </tr>
   </tbody>
 </table>
 
+<!-- Modal Form New Task -->
+<div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <h1><i class="fa fa-plus-circle" aria-hidden="true"></i>
+          Add new task
+      </h1>
 
+      <%= render 'shared/form_new' %>
 
-<%= render 'shared/form_new' %>
+    </div>
+  </div>
+</div>
 
 
 

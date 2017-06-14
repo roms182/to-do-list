@@ -1,0 +1,6 @@
+
+
+$("#todolist").toggleClass('table-striped');
+$("td[data-task-id=<%= @task.id %>]").slideUp(240);
+$("tr[data-task-id=<%= @task.id %>]").slideUp(500);
+

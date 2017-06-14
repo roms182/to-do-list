@@ -9,9 +9,15 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+      end
     else
       render :index
+      respond_to do |format|
+       format.html { render 'restaurants/show' }
+       format.js  # <-- idem
+      end
     end
   end
 
@@ -19,8 +25,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    Task.find(params[:id]).delete
-    redirect_to root_path
+    @task = Task.find(params[:id])
+    @task.delete
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { }
+    end
   end
 
   private
