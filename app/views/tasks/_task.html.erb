@@ -1,0 +1,12 @@
+
+<ul data-task-id="<%= task.id %>" class="unstyled-list">
+  <li class="text-center" data-task-id="<%= task.id %>"><%# index + 1 %></li>
+  <li data-task-id="<%= task.id %>"><%= task.title %></li>
+  <li class="text-center" data-task-id="<%= task.id %>"><%= task.time.to_s + " h"%></li>
+  <li class="text-center" data-task-id="<%= task.id %>">
+    <%= link_to task, method: :delete, remote: true do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+  </li>
+</ul>
+

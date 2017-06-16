@@ -1,2 +1,10 @@
-// app/views/reviews/create.js.erb
+
+$("<%= j render partial: 'task', locals: {task: @task} %>").hide().prependTo("#todolist-body").slideDown(600);
+
+// Re-calculate total of to do list
+var total = parseInt($('#total-list').text().split(' ')[0]);
+var task_time = <%= @task.time %>;
+var new_total = total + task_time;
+
+$('#total-list').text(String(new_total) + " h");
 

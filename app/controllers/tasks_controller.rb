@@ -11,6 +11,8 @@ class TasksController < ApplicationController
     if @task.save
       respond_to do |format|
         format.html { redirect_to root_path }
+      # if the response format is javascript, do something else...
+        format.js { }
       end
     else
       render :index
@@ -29,7 +31,6 @@ class TasksController < ApplicationController
     @task.delete
 
     respond_to do |format|
-      format.html { redirect_to root_path }
       format.js { }
     end
   end
@@ -37,6 +38,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:order, :title, :time)
+    params.require(:task).permit(:title, :time)
   end
 end

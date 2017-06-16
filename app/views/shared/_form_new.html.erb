@@ -1,7 +1,8 @@
-<%= simple_form_for @task do |f| %>
+<div class="custom-form form-inline">
+<%= simple_form_for @task, remote: true do |f|%>
   <%= f.error_notification %>
-  <%= f.input :title, id: "new-form-title", placeholder: "Title", label: false %>
+  <%= f.input :title, id: "new-form-title", placeholder: "Title", label: false, style: "width:40%;" %>
   <%= f.input :time, placeholder: "Time", label: false %>
-  <%= f.submit 'Create', class:"loginmodal-submit" %>
+  <%= f.submit 'Create' %>
 <% end %>
-
+</div>

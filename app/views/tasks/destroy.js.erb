@@ -1,6 +1,10 @@
+// Re-calculate total of to do list
+var total = parseInt($('#total-list').text().split(' ')[0]);
+var task_time = <%= @task.time %>;
+var new_total = total - task_time;
 
 
-$("#todolist").toggleClass('table-striped');
-$("td[data-task-id=<%= @task.id %>]").slideUp(240);
-$("tr[data-task-id=<%= @task.id %>]").slideUp(500);
+$("ul[data-task-id=<%= @task.id %>]").slideUp(400);
 
+
+$('#total-list').text(String(new_total) + " h");
