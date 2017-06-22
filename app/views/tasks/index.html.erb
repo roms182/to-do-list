@@ -1,45 +1,28 @@
 <h1>Welcome to new TO DO LIST App</h1>
 
+<p><%= link_to "Add", "#", remote: true, id:"add-task-link"%>&nbsp;<a href="">l</a>&nbsp;<%= link_to "Change", "", remote: true, id:"change-order-link"%></p>
 
-
-<%= render 'shared/form_new' %>
+<%= render partial: 'shared/form_new' %>
 
 <div id="todolist" class="">
-
-    <ul class="unstyled-list">
-  <li class="text-center"><strong>Order</strong></li>
-  <li class="text-center"><strong>Title</strong></li>
-  <li class="text-center"><strong>Time</strong></li>
-  <li class="text-center"><strong>Del.</strong></li>
-</ul>
+  <ul class="unstyled-list">
+    <li class="text-center"><strong>Order</strong></li>
+    <li class="text-center"><strong>Title</strong></li>
+    <li class="text-center"><strong>Time</strong></li>
+    <li class="text-center"><strong>Del.</strong></li>
+  </ul>
 
 <div id="todolist-body">
-  <%# @tasks.order(id: :desc).each_with_index do |task, index| %>
-    <%= render @tasks %>
-  <%# end %>
-  <ul class="unstyled-list">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-  <ul class="unstyled-list">
+  <% @tasks.order(:order).each do |task| %>
+    <%= render partial: 'task', locals: {task: task} %>
+  <% end %>
+</div>
+
+  <ul id="todolist-total" class="unstyled-list">
     <li></li>
     <li style="text-align: right"> Total :</li>
     <li id="total-list" class="text-center"><%=  @sumtime.to_s + " h" %></li>
     <li></li>
   </ul>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
+<br/>

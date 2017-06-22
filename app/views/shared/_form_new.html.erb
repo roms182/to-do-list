@@ -1,4 +1,4 @@
-<div class="custom-form form-inline">
+<div id="new-task-form" class="custom-form form-inline" style="display:none">
 <%= simple_form_for @task, remote: true do |f|%>
   <%= f.error_notification %>
   <%= f.input :title, id: "new-form-title", placeholder: "Title", label: false, style: "width:40%;" %>

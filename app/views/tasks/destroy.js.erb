@@ -1,10 +1,24 @@
+
+
+total();
+reindex();
+$("ul[data-task-id=<%= @task.id %>]").slideUp(400, function() { $(this).remove()});
+
 // Re-calculate total of to do list
-var total = parseInt($('#total-list').text().split(' ')[0]);
-var task_time = <%= @task.time %>;
-var new_total = total - task_time;
+function total(){
+  var total = parseInt($('#total-list').text().split(' ')[0]);
+  var task_time = <%= @task.time %>;
+  var new_total = total - task_time;
 
+  $('#total-list').text(String(new_total) + " h");
+};
 
-$("ul[data-task-id=<%= @task.id %>]").slideUp(400);
-
-
-$('#total-list').text(String(new_total) + " h");
+// Re-index the Order column
+function reindex () {
+  var k = parseInt($("ul[data-task-id=<%= @task.id %>]").index());
+  $('#todolist-body ul:gt(' + k + ')').each(function(){
+    var i = $(this).index();
+    $(this).attr("data-task-order", i);
+    $(this).children('li:first').text(i);
+  });
+};

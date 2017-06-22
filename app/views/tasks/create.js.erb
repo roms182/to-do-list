@@ -1,10 +1,32 @@
 
-$("<%= j render partial: 'task', locals: {task: @task} %>").hide().prependTo("#todolist-body").slideDown(600);
+$("<%= j render partial: 'task', locals: {task: @task, index: 0} %>").hide().prependTo("#todolist-body").slideDown(600);
+
+emptyForm('#task_title');
+emptyForm('#task_time');
+total();
+reindex();
+
+// Empty the form inputs
+function emptyForm(id){
+  var ptitle = $(id).val();
+  $(id).attr('placeholder', ptitle);
+  $(id).val("");
+};
 
 // Re-calculate total of to do list
-var total = parseInt($('#total-list').text().split(' ')[0]);
-var task_time = <%= @task.time %>;
-var new_total = total + task_time;
+function total(){
+  var total = parseInt($('#total-list').text().split(' ')[0]);
+  var task_time = <%= @task.time %>;
+  var new_total = total + task_time;
 
-$('#total-list').text(String(new_total) + " h");
+  $('#total-list').text(String(new_total) + " h");
+};
 
+
+// Re-index the Order column
+function reindex () {
+  $('#todolist-body ul').each(function(index){
+    $(this).attr("data-task-order", index + 1);
+    $(this).children('li:first').text(index + 1);
+  });
+};
