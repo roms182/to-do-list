@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: 'tasks#index'
   resources :tasks do
     put :sort, on: :collection
+    put :timer, on: :collection
   end
 end

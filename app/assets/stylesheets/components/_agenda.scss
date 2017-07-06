@@ -1,0 +1,84 @@
+// variables
+
+.lunch{
+  background-color:#F9F9F9;
+}
+
+ul.agenda-fond{
+  width:435px;
+  margin:0px;
+  padding:2px;
+  border-collapse:collapse;
+
+  li.agenda-titre{
+      background-color:#F9F9F9;
+      border-top:1px solid #d9d9d9;
+      border-top-right-radius:10px;
+      border-top-left-radius:10px;
+
+    div#add-task-button, div{
+      width:10%;
+      padding:auto;
+      vertical-align:center;
+      font-size:25px;
+      font-weight:100;
+    }
+
+    strong{
+      flex: 1 1 auto;
+    }
+  }
+
+  li{
+    border-bottom:1px solid #d9d9d9;
+    border-left:1px solid #d9d9d9;
+    border-right:1px solid #d9d9d9;
+    padding:2px;
+    width:100%;
+    height:$li-height;
+
+    display:flex;
+    align-item:middle;
+    text-align:center;
+    color:#d9d9d9;
+
+      .timer{
+        width:10%;
+        padding:auto;
+        font-size:18px;
+        font-weight:100;
+      }
+
+      .buttin{
+        flex:1 1 auto;
+      }
+  }
+
+  li:last-of-type{
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+  }
+
+}
+
+
+.task{
+  background-color:#4C9ED9;
+  color:white;
+  border-radius:5px;
+  padding: 1px 5px;
+  margin-left:10px;
+  min-width:100px;
+  cursor:default;
+  display:inline-block;
+  padding-right:30px;
+}
+
+@for $i from 1 through 8 {
+    .hour#{$i} {
+        height:$i*$li-height - 2px;
+    }
+}
+
+
+

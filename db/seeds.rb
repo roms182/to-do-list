@@ -7,23 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Task.delete_all
 
-Task.create(order: 1, title: 'Peinture', time: 1)
-Task.create(order: 2, title: 'Tourillon', time: 1)
-Task.create(order: 3, title: 'Electricité', time: 1)
-Task.create(order: 4, title: 'Assemblage', time: 2)
-Task.create(order: 5, title: 'Rabotage', time: 1)
-Task.create(order: 6, title: 'Pâte à bois', time: 2)
-Task.create(order: 7, title: 'Peinture', time: 1)
-Task.create(order: 8, title: 'Tourillon', time: 1)
-Task.create(order: 9, title: 'Electricité', time: 1)
-Task.create(order: 10, title: 'Assemblage', time: 2)
-Task.create(order: 11, title: 'Rabotage', time: 1)
-Task.create(order: 12, title: 'Pâte à bois', time: 2)
-Task.create(order: 13, title: 'Peinture', time: 1)
-Task.create(order: 14, title: 'Tourillon', time: 1)
-Task.create(order: 15, title: 'Electricité', time: 1)
-Task.create(order: 16, title: 'Assemblage', time: 2)
-Task.create(order: 17, title: 'Rabotage', time: 1)
-Task.create(order: 18, title: 'Pâte à bois', time: 2)
+Task.create(order: 1, title: 'Garage Peugeot', time: 1, timer: 1)
+Task.create(order: 2, title: 'Module C: peinture', time: 1, timer: 2)
+Task.create(order: 3, title: 'Module C: assemblage & bande', time: 2, timer: 3)
+Task.create(order: 4, title: 'Module A & B : bande & assemblage', time: 2, timer: 7)
+Task.create(order: 5, title: 'Module A & B : ponçage', time: 1, timer: 9)
+
 
 

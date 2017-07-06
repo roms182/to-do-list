@@ -3,7 +3,7 @@
 total();
 reindex();
 $("ul[data-task-id=<%= @task.id %>]").slideUp(400, function() { $(this).remove()});
-
+$("#box-<%= @task.id %>").fadeOut(600, function() { $(this).remove() });
 // Re-calculate total of to do list
 function total(){
   var total = parseInt($('#total-list').text().split(' ')[0]);

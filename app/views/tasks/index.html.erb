@@ -11,11 +11,11 @@
     <li class="text-center"><strong>Time</strong></li>
     <li class="text-center"><strong>Del.</strong></li>
   </ul>
-
 <div id="todolist-body">
   <% @tasks.order(:order).each do |task| %>
     <%= render partial: 'task', locals: {task: task} %>
   <% end %>
+
 </div>
 
   <ul id="todolist-total" class="unstyled-list">
@@ -25,4 +25,39 @@
     <li></li>
   </ul>
 </div>
+
+<br/>
+<br/>
+<br/>
+
+<div>
+  <ul class="agenda-fond">
+    <li class="agenda-titre">
+      <div id="add-task-button">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+      </div>
+      <strong>Aujourd'hui</strong>
+      <div></div>
+    </li>
+  <% 16.times do |i| %>
+    <li id="hour-<%=i+8%>" class="snoppy <%='lunch' if [5, 12].include? i %>" data-timer="<%=i%>">
+      <div class="timer"><%= i + 8 %>h</div>
+      <div class="buttin">
+      <%= puts @tasks.where(timer: i) %>
+        <%= render partial: 'taskbox', locals:{ task: @tasks.where(timer: i).first } unless @tasks.where(timer: i).empty? %>
+      </div>
+      <div class="timer"></div>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>

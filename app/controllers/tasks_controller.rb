@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:sort]
+  skip_before_action :verify_authenticity_token, only: [:sort, :timer]
 
   def index
     @task = Task.new
@@ -9,7 +9,8 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.order = 1;
+    @task.order = Task.all.count + 1
+    @task.timer = 0
 
     if @task.save
       respond_to do |format|
@@ -38,11 +39,16 @@ class TasksController < ApplicationController
   end
 
   def sort
-
     params[:order].each do |key, value|
       Task.find(value['id']).update_attribute(:order,value['position'])
     end
-    fail
+    render :nothing => true
+  end
+
+  def timer
+    h = params[:timer]
+    id = h['id'].split('-').last.to_i
+    Task.find(id).update_attribute(:timer, h['timer'])
     render :nothing => true
   end
 

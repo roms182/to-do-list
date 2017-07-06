@@ -1,16 +1,27 @@
+// New Line in TodoList
+$("<%= j render partial: 'task', locals: {task: @task, index: 0} %>").hide().appendTo("#todolist-body").slideDown(600);
 
-$("<%= j render partial: 'task', locals: {task: @task, index: 0} %>").hide().prependTo("#todolist-body").slideDown(600);
+// Blue Box in Timer List
+$("<%= j render partial: 'taskbox', locals: {task: @task, timer: 0} %>").hide().appendTo("#hour-8 > div.buttin").fadeIn(1400).draggable({
+    cursor: "move",
+    containment : '.agenda-fond',
+    grid: [0, 40],
+    revert: 'invalid'
+  });
 
 emptyForm('#task_title');
 emptyForm('#task_time');
 total();
 reindex();
 
+
+// ---------------------------------------
 // Empty the form inputs
 function emptyForm(id){
   var ptitle = $(id).val();
   $(id).attr('placeholder', ptitle);
   $(id).val("");
+  $('#new-form-title').focus();
 };
 
 // Re-calculate total of to do list
@@ -24,9 +35,11 @@ function total(){
 
 
 // Re-index the Order column
-function reindex () {
+function reindex(){
   $('#todolist-body ul').each(function(index){
     $(this).attr("data-task-order", index + 1);
     $(this).children('li:first').text(index + 1);
   });
 };
+
+
