@@ -18,9 +18,9 @@ $( function() {
     accept: '.task',
     drop: function(event, ui){
       var updated_timer = { id: ui.draggable.attr('id'), timer: $(this).data('timer') };
-      var title = ui.draggable.text();
-      alert($(this).attr("id"));
-      //$("<%= j render partial: 'taskbox', locals: {task: @task} %>").hide().appendTo(this div.buttin).fadeIn()
+      var title = ui.draggable.attr('id');
+      var id = $(this).attr("id");
+      $("#" + title).appendTo("#" + id + " > div.buttin").css('top', 0);
       $.ajax({
         method: "PUT",
         url: "tasks/timer",
