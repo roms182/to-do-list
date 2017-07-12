@@ -2,7 +2,7 @@
 <%= simple_form_for @task, remote: true do |f|%>
   <%= f.error_notification %>
   <%= f.input :title, id: "new-form-title", placeholder: "Title", label: false, style: "width:40%;", autofocus: true %>
-  <%= f.input :time, placeholder: "Time", label: false %>
+  <%= f.input :time, type: "time", value: "1", label: false %>
   <%= f.submit 'Create' %>
 <% end %>
 </div>

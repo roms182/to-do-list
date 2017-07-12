@@ -52,6 +52,13 @@ class TasksController < ApplicationController
     render :nothing => true
   end
 
+  def reset_list
+    Task.delete_all
+    respond_to do |format|
+      format.js { }
+    end
+  end
+
   private
 
   def task_params

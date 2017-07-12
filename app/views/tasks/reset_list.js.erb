@@ -1,0 +1,7 @@
+
+
+$("ul[data-task-id]").slideUp(1000, function() {
+  $(this).remove();
+  $('#total-list').text('0 h');
+});
+$('[id^="box"]').fadeOut(600, function() { $(this).remove() });

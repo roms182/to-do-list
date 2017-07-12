@@ -2,7 +2,8 @@
 $("<%= j render partial: 'task', locals: {task: @task, index: 0} %>").hide().appendTo("#todolist-body").slideDown(600);
 
 // Blue Box in Timer List
-$("<%= j render partial: 'taskbox', locals: {task: @task, timer: 0} %>").hide().appendTo("#hour-8 > div.buttin").fadeIn(1400).draggable({
+var next = parseInt($('#total-list').text().split(' ')[0]);
+$("<%= j render partial: 'taskbox', locals: {task: @task, timer: 0} %>").hide().appendTo("li[data-timer=" + next + "] > div.buttin").fadeIn(1400).draggable({
     cursor: "move",
     containment : '.agenda-fond',
     grid: [0, 40],
@@ -20,8 +21,7 @@ reindex();
 function emptyForm(id){
   var ptitle = $(id).val();
   $(id).attr('placeholder', ptitle);
-  $(id).val("");
-  $('#new-form-title').focus();
+  id == '#task_title' ? $(id).val("") : $(id).val("1") ;
 };
 
 // Re-calculate total of to do list
@@ -32,7 +32,6 @@ function total(){
 
   $('#total-list').text(String(new_total) + " h");
 };
-
 
 // Re-index the Order column
 function reindex(){

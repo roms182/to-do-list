@@ -20,7 +20,7 @@ $( function() {
       var updated_timer = { id: ui.draggable.attr('id'), timer: $(this).data('timer') };
       var title = ui.draggable.attr('id');
       var id = $(this).attr("id");
-      $("#" + title).appendTo("#" + id + " > div.buttin").css('top', 0);
+      $("#" + title).appendTo("#" + id + " > div.buttin").css('top', '0px');
       $.ajax({
         method: "PUT",
         url: "tasks/timer",
@@ -54,6 +54,12 @@ $( function() {
     });
     $( "#todolist-body" ).disableSelection();
 // Draggable
+
+    $("#agenda").draggable();
+    $("#todolist").draggable();
+    $(".task").dblclick(function(){
+      $(this).toggleClass('red');
+    });
 });
 
 

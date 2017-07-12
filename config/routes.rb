@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :tasks do
     put :sort, on: :collection
     put :timer, on: :collection
+    delete :reset_list, on: :collection, as: 'reset_list'
   end
 end
