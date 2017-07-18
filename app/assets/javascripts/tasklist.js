@@ -16,6 +16,7 @@ $( function() {
   });
   $(".agenda-fond li").droppable({
     accept: '.task',
+    tolerance: "pointer",
     drop: function(event, ui){
       var updated_timer = { id: ui.draggable.attr('id'), timer: $(this).data('timer') };
       var title = ui.draggable.attr('id');
