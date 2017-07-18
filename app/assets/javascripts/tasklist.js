@@ -57,7 +57,7 @@ $( function() {
 
     $("#agenda").draggable();
     $("#todolist").draggable();
-    $(".task").dblclick(function(){
+    $( ".buttin" ).on('dblclick','.task', function(event){
       $(this).toggleClass('red');
     });
 });
