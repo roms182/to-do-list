@@ -8,9 +8,10 @@ class TasksController < ApplicationController
   end
 
   def create
+    follow = Task.count.zero? ? 1 : ( Task.last.timer + Task.last.time )
     @task = Task.new(task_params)
     @task.order = Task.all.count + 1
-    @task.timer = 0
+    @task.timer = follow
 
     if @task.save
       respond_to do |format|

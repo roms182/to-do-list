@@ -2,13 +2,17 @@
 $("<%= j render partial: 'task', locals: {task: @task, index: 0} %>").hide().appendTo("#todolist-body").slideDown(600);
 
 // Blue Box in Timer List
-var next = parseInt($('#total-list').text().split(' ')[0]);
-$("<%= j render partial: 'taskbox', locals: {task: @task, timer: 0} %>").hide().appendTo("li[data-timer=" + next + "] > div.buttin").fadeIn(1400).draggable({
+var time = parseInt($('.task:last').attr('data-time'));
+var last_timer = parseInt($('.task:last').parents('.snoppy').attr('data-timer'));
+var next = (last_timer + time + 8) || 9;
+$("<%= j render partial: 'taskbox', locals: { task: @task } %>").hide().appendTo("#hour-" + next + " > div.buttin").fadeIn(1400).draggable({
     cursor: "move",
     containment : '.agenda-fond',
     grid: [0, 40],
-    revert: 'invalid'
-  });
+    revert: 'invalid',
+    }
+);
+
 
 emptyForm('#task_title');
 emptyForm('#task_time');

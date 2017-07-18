@@ -32,7 +32,7 @@
 <br/>
 <br/>
 
-<div id="agenda">
+<div id="agenda" data-next="0">
   <ul class="agenda-fond">
     <li class="agenda-titre">
       <div id="add-task-button">
@@ -45,7 +45,7 @@
     <li id="hour-<%=i+8%>" class="snoppy <%='lunch' if [5, 12].include? i %>" data-timer="<%=i%>">
       <div class="timer"><%= i + 8 %>h</div>
       <div class="buttin">
-        <%= render partial: 'taskbox', locals:{ task: @tasks.where(timer: i).first } unless @tasks.where(timer: i).empty? %>
+        <%= render partial: 'taskbox', locals:{ task: @tasks.where(timer: i)[0] } unless @tasks.where(timer: i).empty? %>
       </div>
       <div class="timer"></div>
     </li>
