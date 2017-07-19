@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:sort, :timer]
+  skip_before_action :verify_authenticity_token, only: [:sort, :timer, :change_color]
 
   def index
     @task = Task.new
@@ -8,10 +8,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    follow = Task.count.zero? ? 1 : ( Task.last.timer + Task.last.time )
+    max = Task.order(timer: :desc).first # retrieves the Task with highest timer position
+    follow = Task.count.zero? ? 1 : ( max.timer + max.time )
     @task = Task.new(task_params)
     @task.order = Task.all.count + 1
-    @task.timer = follow
+    @task.timer = follow # places new task after the ones with highest timer position
+    @task.color = ''
 
     if @task.save
       respond_to do |format|
@@ -58,6 +60,14 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.js { }
     end
+  end
+
+  def change_color
+    task_id = params[:id].to_i
+    task = Task.find(task_id)
+    task.color == '' ? task.color = 'red' : task.color = ''
+    task.save
+    render :nothing => true
   end
 
   private

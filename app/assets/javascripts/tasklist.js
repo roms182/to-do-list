@@ -51,15 +51,23 @@ $( function() {
           url: "tasks/sort",
           data: { order: updated_order }
         });
-      },
+      }
     });
     $( "#todolist-body" ).disableSelection();
 // Draggable
 
     $("#agenda").draggable();
     $("#todolist").draggable();
+
+// Red Color when dble clicking
     $( ".buttin" ).on('dblclick','.task', function(event){
       $(this).toggleClass('red');
+      var task_id = $(this).attr('id').split("-")[1];
+      $.ajax({
+        method: "PUT",
+        url: "tasks/change_color",
+        data: { id: task_id}
+      });
     });
 });
 

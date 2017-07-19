@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Task.delete_all
 
-Task.create(order: 1, title: 'Garage Peugeot', time: 1, timer: 1)
-Task.create(order: 2, title: 'Module C: peinture', time: 1, timer: 2)
-Task.create(order: 3, title: 'Module C: assemblage & bande', time: 2, timer: 3)
-Task.create(order: 4, title: 'Module A & B : bande & assemblage', time: 2, timer: 7)
-Task.create(order: 5, title: 'Module A & B : ponçage', time: 1, timer: 9)
+Task.create(order: 1, title: 'Garage Peugeot', time: 1, timer: 1, color: '')
+Task.create(order: 2, title: 'Déjeuner Nico', time: 2, timer: 2, color: '')
+Task.create(order: 3, title: 'Castorama', time: 2, timer: 4, color: 'red')
+Task.create(order: 4, title: 'Trouver Echelle', time: 1, timer: 6, color: '')
+Task.create(order: 5, title: 'Jogging', time: 1, timer: 7, color: '')
 
 
 
