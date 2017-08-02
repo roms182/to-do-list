@@ -1,55 +1,41 @@
 .unstyled-list{
   list-style-type:none;
+  margin:0px;
+  padding:5px;
+  height:35px;
   display:flex;
-  width:100%;
-  max-width:650px;
-  margin:0px;
-  padding:0px;
-  height:30px;
-
-  border: 0.5px solid #ddd;
-  border-top:none;
-  border-collapse: collapse;
-  border-spacing: 0px;
+  box-sizing:border-box;
 }
 
-li{
-  flex:1 1 auto;
-  display:inline;
-  margin:0px;
-  border-right: 1px solid #ddd;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.unstyled-list:first-of-type{
-  border-top:1px solid #ddd;
-  border-bottom:1px solid #ddd;
-}
 
 .unstyled-list li:nth-child(1){
-  width:15%;
+  width:5%;
+  flex:1 1 0;
 }
 
 .unstyled-list li:nth-child(2){
-  width:55%;
-  padding-left:10px;
-  padding-right:10px;
+  flex:auto;
+  box-sizing:border-box;
+  width:fill-available;
+  padding:0px 5px;
 }
 
-.unstyled-list li:nth-child(3){
-  width:15%;
-}
+#todolist-body{
+  padding:5px 10px 30px 5px;
+  witdh:60%;
+  background-color:white;
+  border:1px solid $gray-border;
+  border-radius:10px;
 
-.unstyled-list li:nth-child(4){
-  width:15%;
 }
 
 #todolist-body .unstyled-list li:nth-of-type(2){
   cursor:grab;
 }
 
-#todolist-body .unstyled-list:nth-of-type(2n){
-  background-color:#F9F9F9;
+.hour-label{
+  background-color:$gray-back;
+  border-radius:3px;
+  padding:0px 2px;
 }
 

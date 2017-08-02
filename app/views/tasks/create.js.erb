@@ -2,8 +2,8 @@
 $("<%= j render partial: 'task', locals: {task: @task, index: 0} %>").hide().appendTo("#todolist-body").slideDown(600);
 
 // Blue Box in Timer List
-var time = parseInt($('.task:last').attr('data-time'));
-var last_timer = parseInt($('.task:last').parents('.snoppy').attr('data-timer'));
+var time = parseInt($('.task:last').data('time'));
+var last_timer = parseInt($('.task:last').parents('.snoppy').data('timer'));
 var next = (last_timer + time + 8) || 9; //timer starts at 0 but day start at 9
 $("<%= j render partial: 'taskbox', locals: { task: @task } %>").hide().appendTo("#hour-" + next + " > div.buttin").fadeIn(1400).draggable({
     cursor: "move",
@@ -29,11 +29,10 @@ function emptyForm(id){
 
 // Re-calculate total of to do list
 function total(){
-  var total = parseInt($('#total-list').text().split(' ')[0]);
+  var total = parseInt($('#total-list').text().split('')[1]);
   var task_time = <%= @task.time %>;
   var new_total = total + task_time;
-
-  $('#total-list').text(String(new_total) + " h");
+  $('#total-list').text("[" + String(new_total) + " h]");
 };
 
 // Re-index the Order column

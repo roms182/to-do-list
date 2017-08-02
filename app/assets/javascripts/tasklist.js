@@ -56,8 +56,7 @@ $( function() {
     $( "#todolist-body" ).disableSelection();
 // Draggable
 
-    $("#agenda").draggable();
-    $("#todolist").draggable();
+    $(".dragme").draggable();
 
 // Red Color when dble clicking
     $( ".buttin" ).on('dblclick','.task', function(event){
@@ -69,6 +68,8 @@ $( function() {
         data: { id: task_id}
       });
     });
+
+
 });
 
 

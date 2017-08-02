@@ -1,58 +1,84 @@
-<h1>Welcome to new TO DO LIST App</h1>
+<header>
+  <h1><i class="fa fa-list" aria-hidden="true"></i> Simple Planner</h1>
+</header>
 
-<p>
-  <%= link_to "Add", "#", remote: true, id:"add-task-link"%>
-  <a href="">l</a>
-  <%= link_to "Reset", reset_list_tasks_path, method: :delete, remote: true, id:"delete-all-link"%>
-</p>
 
-<%= render partial: 'shared/form_new' %>
+<main>
+  <section>
+  </section>
 
-<div id="todolist" class="">
-  <ul class="unstyled-list">
-    <li class="text-center"><strong>Order</strong></li>
-    <li class="text-center"><strong>Title</strong></li>
-    <li class="text-center"><strong>Time</strong></li>
-    <li class="text-center"><strong>Del.</strong></li>
-  </ul>
-  <div id="todolist-body">
-    <% @tasks.order(:order).each do |task| %>
-     <%= render partial: 'task', locals: {task: task} %>
-    <% end %>
-  </div>
-  <ul id="todolist-total" class="unstyled-list">
-    <li></li>
-    <li style="text-align: right"> Total :</li>
-    <li id="total-list" class="text-center"><%=  @sumtime.to_s + " h" %></li>
-    <li></li>
-  </ul>
-</div>
+  <section>
+   <h2>Today's List</h2>
 
-<div id="agenda" data-next="0">
-  <ul class="agenda-fond">
-    <li class="agenda-titre">
-      <div id="add-task-button">
-        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+    <p>
+      <%= link_to "Add", "#", remote: true, id:"add-task-link"%>
+      <a href="">l</a>
+      <%= link_to "Reset", reset_list_tasks_path, method: :delete, remote: true, id:"delete-all-link"%>
+    </p>
+
+    <%= render partial: 'shared/form_new' %>
+
+
+    <h4><strong>Tasks</strong>
+      <span id="total-list" class="text-center">[<%=  @sumtime.to_s + " h" %>]</span>
+    </h4>
+    <div id="todolist">
+      <div id="todolist-body">
+        <% @tasks.order(:order).each do |task| %>
+         <%= render partial: 'task', locals: {task: task} %>
+       <% end %>
       </div>
-      <strong>Aujourd'hui</strong>
-      <div></div>
-    </li>
-  <% 16.times do |i| %>
-    <li id="hour-<%=i+8%>" class="snoppy <%='lunch' if [5, 12].include? i %>" data-timer="<%=i%>">
-      <div class="timer"><%= i + 8 %>h</div>
-      <div class="buttin">
-        <%= render partial: 'taskbox', locals:{ task: @tasks.where(timer: i)[0] } unless @tasks.where(timer: i).empty? %>
-      </div>
-      <div class="timer"></div>
-    </li>
-  <% end %>
-  </ul>
-</div>
 
-<hr>
+    </div>
 
-<h3>Issues</h3>
-  <ul>
-    <li><strong>Drag & Drop :</strong> probléme avec les blue box supérieures à 1h. Quand on déplace celles-ci, elles sautent plusieurs lignes au moment du drop. Solution : "tolerance" du drag & drop. Voir : <a>http://api.jqueryui.com/droppable/#option-tolerance</a></li>
-  </ul>
+
+  </section>
+
+  <section>
+    <div id="agenda" data-next="0">
+      <ul class="agenda-fond">
+        <li class="agenda-titre">
+          <div id="add-task-button">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+          </div>
+          <strong id="#today-title">Today</strong>
+          <div></div>
+        </li>
+      <% 16.times do |i| %>
+        <li id="hour-<%=i+8%>" class="snoppy <%='lunch' if [5, 12].include? i %>" data-timer="<%=i%>">
+          <div class="timer"><%= i + 8 %>h</div>
+          <div class="buttin">
+            <%= render partial: 'taskbox', locals:{ task: @tasks.where(timer: i)[0] } unless @tasks.where(timer: i).empty? %>
+          </div>
+          <div class="timer"></div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </section>
+</main>
+
+
+
+  <!--
+  <article>
+  <br/>
+  <br/>
+
+  <h3>Issues</h3>
+    <ul>
+      <li><strong>Drag & Drop :</strong> probléme avec les blue box supérieures à 1h. Quand on déplace celles-ci, elles sautent plusieurs lignes au moment du drop. Solution : "tolerance" du drag & drop. Voir : <a>http://api.jqueryui.com/droppable/#option-tolerance</a>&nbsp;<code>JS-JQuery</code></li><br/>
+      <li><strong>Bug : </strong> S'il y a un élément placé en toute dernière position et que l'on en crée un nouveau, alors celui-ci ne s'affichera pas (car en dehors du cadre)&nbsp;<code>Conception</code></li>
+      <li><strong></strong></li>
+    </ul>
+
+    <p>Application :</p>
+    <ul>
+      <li> &nbsp;Feature&nbsp; </li>
+      <li> &nbsp;Persistance&nbsp; </li>
+      <li> &nbsp;Environment&nbsp; </li>
+      <li>  </li>
+    </ul>
+  </article>
+  -->
 

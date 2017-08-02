@@ -1,11 +1,8 @@
 
 <ul data-task-id="<%= task.id %>" data-task-order="<%= task.order %>" class="unstyled-list">
   <li class="text-center"><%= task.order %></li>
-  <li><%= task.title %></li>
-  <li class="text-center"><%= task.time.to_s + " h"%></li>
-  <li class="text-center">
-    <%= link_to task, method: :delete, remote: true do %>
-      <i class="fa fa-times" aria-hidden="true"></i>
+  <li>
+    <%= task.title %>&nbsp;<span class="hour-label"><%= task.time.to_s + "h"%></span>&nbsp;<%= link_to task, method: :delete, remote: true do %><i class="fa fa-times" aria-hidden="true"></i>
     <% end %>
   </li>
 </ul>
