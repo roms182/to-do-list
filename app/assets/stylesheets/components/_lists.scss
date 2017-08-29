@@ -10,7 +10,7 @@
 
 .unstyled-list li:nth-child(1){
   width:5%;
-  flex:1 1 0;
+  flex:1 1 0; // necessary to let the flex-basis to 0 to prevent return to line
 }
 
 .unstyled-list li:nth-child(2){

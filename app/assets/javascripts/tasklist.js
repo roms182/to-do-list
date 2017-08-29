@@ -23,7 +23,7 @@ $( function() {
       var id = $(this).attr("id");
       $("#" + title).appendTo("#" + id + " > div.buttin").css('top', '0px');
       $.ajax({
-        method: "PUT",
+        type: "PUT",
         url: "tasks/timer",
         data: { timer: updated_timer }
       })
@@ -33,7 +33,7 @@ $( function() {
 
 // ADD TASK LINK
     set_position();
-    jQuery("#add-task-link").click(function(){
+    jQuery(".add-task-link").click(function(){
       jQuery("#new-task-form").slideToggle(500);
     });
 // JQUERY SORTABLE
@@ -54,8 +54,8 @@ $( function() {
       }
     });
     $( "#todolist-body" ).disableSelection();
-// Draggable
 
+// Draggable
     $(".dragme").draggable();
 
 // Red Color when dble clicking
@@ -63,7 +63,7 @@ $( function() {
       $(this).toggleClass('red');
       var task_id = $(this).attr('id').split("-")[1];
       $.ajax({
-        method: "PUT",
+        type: "PUT",
         url: "tasks/change_color",
         data: { id: task_id}
       });

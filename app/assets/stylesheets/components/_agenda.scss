@@ -1,16 +1,11 @@
 // Agenda Background
 
-.lunch{
-  background-color:#F9F9F9;
-}
-
 ul.agenda-fond{
   width:435px;
   margin:0px;
   margin-bottom:30px;
   padding:2px;
   border-collapse:collapse;
-  background-color:white;
 
   li.agenda-titre{
       background-color:#F9F9F9;
@@ -39,6 +34,8 @@ ul.agenda-fond{
     width:100%;
     height:$li-height;
 
+    background-color:white;
+
     display:flex;
     align-item:middle;
     text-align:center;
@@ -54,6 +51,11 @@ ul.agenda-fond{
       .buttin{
         flex:1 1 auto;
       }
+
+  }
+
+  .lunch{
+    background-color:#F9F9F9;
   }
 
   li:last-of-type{

@@ -25,14 +25,18 @@ function emptyForm(id){
   var ptitle = $(id).val();
   $(id).attr('placeholder', ptitle);
   id == '#task_title' ? $(id).val("") : $(id).val("1") ;
+  if(id == '#task_title'){
+    $(id).focus()
+  };
 };
 
 // Re-calculate total of to do list
 function total(){
-  var total = parseInt($('#total-list').text().split('')[1]);
+  var total = parseInt($('#total-list').data('time'));
   var task_time = <%= @task.time %>;
   var new_total = total + task_time;
   $('#total-list').text("[" + String(new_total) + " h]");
+  $('#total-list').data("time", new_total);
 };
 
 // Re-index the Order column

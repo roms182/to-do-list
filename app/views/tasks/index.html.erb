@@ -1,5 +1,8 @@
 <header>
-  <h1><i class="fa fa-list" aria-hidden="true"></i> Simple Planner</h1>
+  <h1 class="dragme">
+    <i class="fa fa-list" aria-hidden="true"></i>
+    <strong>Simple</strong> Planner
+  </h1>
 </header>
 
 
@@ -11,16 +14,16 @@
    <h2>Today's List</h2>
 
     <p>
-      <%= link_to "Add", "#", remote: true, id:"add-task-link"%>
+      <%= link_to "Add", "#", remote: true, class: "add-task-link"%>
       <a href="">l</a>
       <%= link_to "Reset", reset_list_tasks_path, method: :delete, remote: true, id:"delete-all-link"%>
     </p>
 
     <%= render partial: 'shared/form_new' %>
 
-
-    <h4><strong>Tasks</strong>
-      <span id="total-list" class="text-center">[<%=  @sumtime.to_s + " h" %>]</span>
+    <h4>
+      <strong>Tasks</strong>
+      <span id="total-list" class="text-center" data-time="<%=  @sumtime.to_s %>">[<%=  @sumtime.to_s + " h" %>]</span>
     </h4>
     <div id="todolist">
       <div id="todolist-body">
@@ -31,7 +34,6 @@
 
     </div>
 
-
   </section>
 
   <section>
@@ -39,7 +41,9 @@
       <ul class="agenda-fond">
         <li class="agenda-titre">
           <div id="add-task-button">
+          <%= link_to "#", remote: true, class: "add-task-link no-link" do %>
             <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+          <% end %>
           </div>
           <strong id="#today-title">Today</strong>
           <div></div>
@@ -69,7 +73,8 @@
     <ul>
       <li><strong>Drag & Drop :</strong> probléme avec les blue box supérieures à 1h. Quand on déplace celles-ci, elles sautent plusieurs lignes au moment du drop. Solution : "tolerance" du drag & drop. Voir : <a>http://api.jqueryui.com/droppable/#option-tolerance</a>&nbsp;<code>JS-JQuery</code></li><br/>
       <li><strong>Bug : </strong> S'il y a un élément placé en toute dernière position et que l'on en crée un nouveau, alors celui-ci ne s'affichera pas (car en dehors du cadre)&nbsp;<code>Conception</code></li>
-      <li><strong></strong></li>
+      <li><strong>Bug (CSS): </strong>La liste de task a pour width la largeur du plus grand élément. Or, bizarrement, sur la plus longue ligne, le dernier caractère était systématiquement renvoyé à la ligne. Cela venait du display:flex du parent. Ayant deux enfants (dont le li qui contient le contenu donnant la taille), il a fallu empêcher le premier de s'agrandir ( 1 1 0 -> ce zéro qui définit la taille de base pour le calcul de l'agrandissement du flex) et permettre au deuxième de prendre toute la place restante (1 1 auto) </li>
+      <li><strong>Bug (CSS): </strong>Pour le total de la todolist, j'utilisais un split sur la string (text) pour récupérer la data et réécrire. Beaucoup mieux de stocker la valeur dans un attribut data-time et de $('#cible').data('time') et $('#cible').data('time', var_new_total)</li>
     </ul>
 
     <p>Application :</p>

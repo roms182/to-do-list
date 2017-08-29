@@ -1,7 +1,7 @@
 <div id="new-task-form" class="custom-form form-inline" style="display:none">
 <%= simple_form_for @task, remote: true do |f|%>
   <%= f.error_notification %>
-  <%= f.input :title, id: "new-form-title", placeholder: "Title", label: false, style: "width:40%;", autofocus: true %>
+  <%= f.input :title, id: "new-form-title", placeholder: "Title", label: false, style: "width:40%;", autofocus: true, error: 'Title is mandatory, please specify one' %>
   <%= f.input :time, type: "time", value: "1", label: false %>
   <%= f.submit 'Create' %>
 <% end %>

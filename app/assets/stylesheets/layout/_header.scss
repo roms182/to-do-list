@@ -1,20 +1,18 @@
 header{
-  min-height:5vh;
+ flex-basis:0;
+ height:5vh;
   border-bottom:1px solid $gray-border;
   margin:0;
   color:$gray-border;
-  padding-left:$section-w;
+  padding:auto;
+  padding-left:$section-w - 3.2vw;
 
     h1{
       font-size:1.4em;
-
       i{
         font-size:1.6em
       }
     }
 }
 
-footer{
-   height:5vh;
-   border-top:1px solid $gray-border;
-}
+
